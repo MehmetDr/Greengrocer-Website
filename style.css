@@ -389,3 +389,19 @@ footer {
     opacity: 0.6;
     pointer-events: none;
 }
+
+/* Fallback badge styling when local images are missing */
+.no-image-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-family: var(--font-text);
+    font-weight: bold;
+    color: var(--white);
+    background-color: rgba(30, 30, 30, 0.6);
+    z-index: 4;
+    pointer-events: none;
+}
