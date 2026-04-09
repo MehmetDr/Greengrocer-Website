@@ -386,7 +386,6 @@ footer {
 
 /* Solgunlaştırma: Tükendi olan kartlar zayıflatılır ve tıklanamaz */
 .product-card.out-of-stock {
-    opacity: 0.55;
-    filter: grayscale(85%);
+    opacity: 0.6;
     pointer-events: none;
 }

@@ -62,5 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => {
             console.error("Google Sheets'ten anlık veri çekilirken hata oluştu:", error);
+            // Varsayılan olarak tüm ürünleri stokta göster
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.classList.add('in-stock');
+                const badge = document.createElement('div');
+                badge.className = 'stock-badge badge-in';
+                badge.textContent = 'Stokta';
+                card.querySelector('.img-placeholder').appendChild(badge);
+            });
         });
 });
