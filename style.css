@@ -240,6 +240,8 @@ section h2 {
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
+    aspect-ratio: 1 / 1;
+    will-change: transform;
 }
 
 /* Hover durumunda resim hafifçe büyür */
