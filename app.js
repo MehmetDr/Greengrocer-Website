@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!titleElement) return;
                 
                 const productName = titleElement.textContent.trim();
+                console.log("Eşleşen ürün:", productName);
                 const imageContainer = card.querySelector('.img-placeholder');
                 
                 // Karşılaştırma yap: Durum Yok mu?
