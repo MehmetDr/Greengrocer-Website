@@ -165,11 +165,47 @@ section h2 {
     margin-bottom: 50px;
 }
 
-/* Ürünlerimiz Bölümü - CSS Grid */
+/* Ürünlerimiz Bölümü - Kategori Başlıkları */
+.category-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--green-main);
+    margin-bottom: 25px;
+    margin-top: 40px;
+    text-align: left;
+    border-bottom: 2px solid var(--green-light);
+    padding-bottom: 10px;
+}
+
+/* Ürünlerimiz Bölümü - CSS Grid Esnek Yapı */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    /* Mobilde yan yana 2 kart */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Tablet (md) */
+@media (min-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+/* Bilgisayar (lg) */
+@media (min-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+    }
+}
+
+/* Geniş Bilgisayar (xl) */
+@media (min-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
 /* ÜRÜN KARTLARI CİLASI: Efektler ve Kenarlıklar (Hover & Edge styling) */
@@ -190,19 +226,33 @@ section h2 {
     box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Gösterişli, derin alt gölge */
 }
 
-/* Görsel Yer Tutucuları iştah açıcı ve renkli kaplamalarla düzenlendi */
+/* Görsel alanı (<img> artık içeride konumlanıyor) */
 .img-placeholder {
     width: 100%;
     height: 220px;
     background-color: #ededed;
-    background-size: cover;
-    background-position: center;
+    position: relative;
+    overflow: hidden; /* Büyütme anında taşmayı engellemek için */
 }
 
-.product-card h3 {
+.img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Hover durumunda resim hafifçe büyür */
+.product-card:hover .img-placeholder img {
+    transform: scale(1.1);
+}
+
+.product-card h3, .product-card h4 {
     color: var(--green-dark);
     margin-top: 15px;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    font-family: var(--font-heading);
+    padding: 0 10px;
 }
 
 /* Hakkımızda Bölümü */
