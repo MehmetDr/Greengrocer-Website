@@ -38,8 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const imageContainer = card.querySelector('.img-placeholder');
                 
                 // Karşılaştırma yap: Durum Yok mu?
-                // Büyük, küçük harf ve boşluk hatalarını telafi edelim
-                const currentStatus = inventory[productNameKey] ? inventory[productNameKey].toUpperCase() : 'VAR';
+                // Büyük, küçük harf ve boşluk hatalarını telafi edelim (Fuzzy Matching)
+                const matchedKey = Object.keys(inventory).find(key => productNameKey.includes(key) || key.includes(productNameKey));
+                const currentStatus = matchedKey && inventory[matchedKey] ? inventory[matchedKey].toUpperCase() : 'VAR';
                 
                 if (currentStatus === 'YOK' || currentStatus === 'TÜKENDİ') {
                     // Tükendi Sınıfı Ekle
