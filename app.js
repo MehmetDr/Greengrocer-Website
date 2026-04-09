@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             rows.forEach(row => {
                 if (row.c && row.c[0] && row.c[0].v !== null) {
-                    const productName = row.c[0].v.toString().trim();
+                    const productName = row.c[0].v.toString().trim().toLowerCase();
                     // İkinci sütun (Durum) veriyi kontrol et, yoksa varsayılan 'Var' say.
                     const status = row.c[1] && row.c[1].v ? row.c[1].v.toString().trim() : 'Var';
                     inventory[productName] = status;
@@ -32,13 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 const titleElement = card.querySelector('h4');
                 if (!titleElement) return;
                 
-                const productName = titleElement.textContent.trim();
-                console.log("Eşleşen ürün:", productName);
+                const productNameRaw = titleElement.textContent.trim();
+                const productNameKey = productNameRaw.toLowerCase();
+                console.log("Eşleşen ürün:", productNameRaw);
                 const imageContainer = card.querySelector('.img-placeholder');
                 
                 // Karşılaştırma yap: Durum Yok mu?
                 // Büyük, küçük harf ve boşluk hatalarını telafi edelim
-                const currentStatus = inventory[productName] ? inventory[productName].toUpperCase() : 'VAR';
+                const currentStatus = inventory[productNameKey] ? inventory[productNameKey].toUpperCase() : 'VAR';
                 
                 if (currentStatus === 'YOK' || currentStatus === 'TÜKENDİ') {
                     // Tükendi Sınıfı Ekle
